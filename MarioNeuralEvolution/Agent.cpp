@@ -17,6 +17,12 @@ void Agent::MoveForward()
 {
 	position.x += marioConstants::playerMoveSpeed;
 }
+
+void Agent::MoveBackward()
+{
+	position.x -= marioConstants::playerMoveSpeed;
+}
+
 void Agent::Jump()
 {
 	velocity.y = marioConstants::jumpVel;
@@ -32,6 +38,21 @@ void Agent::Draw(sf::RenderWindow * window)
 void Agent::setPosition(sf::Vector2f position)
 {
 	this->position = sf::Vector2f(position.x, position.y);
+}
+
+sf::Vector2f* Agent::getPosition()
+{
+	return &position;
+}
+
+sf::Vector2f* Agent::getSize()
+{
+	return &size;
+}
+
+sf::Vector2f* Agent::getAcceleration()
+{
+	return &acceleration;
 }
  
 void Agent::Update()

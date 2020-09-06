@@ -9,8 +9,10 @@ Platform::Platform(sf::Vector2f size, sf::Vector2f position)
 
 bool Platform::checkCollision(sf::Vector2f* position, sf::Vector2f* size)
 {
-    //TODO: AABB
-    return false;
+    return (this->pos.x < (*position).x + (*size).x &&
+        this->pos.x + this->size.x >(*position).x &&
+        this->pos.y < (*position).y + (*size).y &&
+        this->pos.y + this->size.y >(*position).y);
 }
 
 void Platform::Draw(sf::RenderWindow* window)

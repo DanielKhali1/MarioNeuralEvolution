@@ -21,8 +21,22 @@ int main()
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
             agent.Jump();
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            agent.MoveForward();
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            agent.MoveBackward();
+
+
+
 
         agent.Update();
+
+        if (platform.checkCollision(agent.getPosition(), agent.getSize()))
+        {
+            agent.setPosition(sf::Vector2f(agent.getPosition()->x, platform.getPosition()->y - agent.getSize()->y));
+            agent.getAcceleration()->y = 0;
+        }
+
 
         window.clear();
         agent.Draw(&window);
