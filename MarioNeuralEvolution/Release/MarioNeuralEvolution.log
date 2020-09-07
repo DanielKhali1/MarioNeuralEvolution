@@ -1,7 +1,9 @@
 ﻿  Agent.cpp
+  main.cpp
+  Platform.cpp
   Generating code
-  2 of 20 functions (10.0%) were compiled, the rest were copied from previous compilation.
+  20 of 20 functions (100.0%) were compiled.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  MarioNeuralEvolution.vcxproj -> C:\Users\Danny\source\repos\MarioNeuralEvolution\Release\MarioNeuralEvolution.exe
+  MarioNeuralEvolution.vcxproj -> D:\AITesting\MarioNeuralEvolution\Release\MarioNeuralEvolution.exe
