@@ -5,7 +5,7 @@
 int main()
 {
     GameManager Manager;
-    Manager.initializeGame();
+    Manager.startGame();
     /*
     ]sf::RenderWindow window(sf::VideoMode(720, 500), "SFML works!");
 

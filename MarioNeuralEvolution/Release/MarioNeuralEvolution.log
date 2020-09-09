@@ -1,8 +1,9 @@
 ﻿  GameManager.cpp
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\GameManager.cpp(7,1): error C2512: 'Platform': no appropriate default constructor available
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\Platform.h(4,7): message : see declaration of 'Platform'
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\GameManager.cpp(49,27): warning C4018: '<': signed/unsigned mismatch
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\GameManager.cpp(63,27): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
   MapControl.cpp
-  Generating code
-  0 of 23 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  MarioNeuralEvolution.vcxproj -> D:\AITesting\MarioNeuralEvolution\Release\MarioNeuralEvolution.exe
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\MapControl.cpp(7,1): error C2512: 'Platform': no appropriate default constructor available
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\Platform.h(4,7): message : see declaration of 'Platform'
