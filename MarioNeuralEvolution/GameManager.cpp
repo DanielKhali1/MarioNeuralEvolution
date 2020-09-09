@@ -1,11 +1,10 @@
 #include "GameManager.h"
 #include "MapControl.h"
+#include <iostream>
 
-
-GameManager::GameManager():
-    map(0)
+GameManager::GameManager()
 {
-    
+
 }
 
 void GameManager::createMap(int level) {
@@ -46,7 +45,7 @@ void GameManager::startGame() {
 
         agent.Update();
 
-        for (int i = 0; i < platVectors.size(); i++) {
+        for (unsigned int i = 0; i < platVectors.size(); i++) {
             if (platVectors.at(i).checkCollision(agent.getPosition(), agent.getSize()))
             {
                 agent.setPosition(sf::Vector2f(agent.getPosition()->x, platVectors.at(i).getPosition()->y - agent.getSize()->y));
@@ -60,7 +59,7 @@ void GameManager::startGame() {
 
         window.clear();
         agent.Draw(&window);
-        for (int i = 0; i < platVectors.size(); i++) {
+        for (unsigned int i = 0; i < platVectors.size(); i++) {
             platVectors.at(i).Draw(&window);
         }
         window.display();

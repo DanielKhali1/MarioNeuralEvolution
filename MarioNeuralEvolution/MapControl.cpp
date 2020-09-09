@@ -3,6 +3,11 @@
 #include "Agent.h"
 #include "Platform.h"
 #include <vector>
+
+MapControl::MapControl()
+{
+}
+
 MapControl::MapControl(int level)
 {
 	switch (level)

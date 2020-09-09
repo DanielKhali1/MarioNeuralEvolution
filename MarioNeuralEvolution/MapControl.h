@@ -4,6 +4,7 @@
 class MapControl
 {
 public:
+	MapControl();
 	MapControl(int level);
 	std::vector<Platform> getPlatforms();
 	Platform getEnd();

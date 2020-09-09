@@ -3,6 +3,7 @@
 #include "Agent.h"
 #include "Platform.h"
 #include "MapControl.h"
+#include <vector>
 class GameManager
 {
 public:

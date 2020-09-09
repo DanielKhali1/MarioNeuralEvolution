@@ -1,5 +1,9 @@
 #include "Platform.h"
 
+Platform::Platform()
+{
+}
+
 Platform::Platform(sf::Vector2f size, sf::Vector2f position)
     : pos(position),
     size(size)
