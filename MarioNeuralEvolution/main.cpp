@@ -1,9 +1,14 @@
 #include <SFML/Graphics.hpp>
 #include "Agent.h"
 #include "Platform.h"
+#include "GameManager.h"
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(720, 500), "SFML works!");
+    GameManager Manager;
+    Manager.createMap(0);
+    Manager.startGame();
+    /*
+    ]sf::RenderWindow window(sf::VideoMode(720, 500), "SFML works!");
 
     Agent agent(20, 20);
     agent.setPosition(sf::Vector2f(20, 20));
@@ -43,5 +48,6 @@ int main()
         platform.Draw(&window);
         window.display();
     }
+    */
     return 0;
 }
