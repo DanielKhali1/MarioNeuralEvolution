@@ -18,13 +18,15 @@ void GameManager::startBreeding() {
 void GameManager::startGame() {
     sf::RenderWindow window(sf::VideoMode(720, 500), "SFML works!");
     Agent agent(20, 20);
-    agent.setPosition(sf::Vector2f(20, 20));
+    
     //Platform platform(sf::Vector2f(200, 40), sf::Vector2f(0, 400));//TODO: Vector of Platforms
     //Platform platform2(sf::Vector2f(300, 20), sf::Vector2f(100, 300));
     //Platform platform3(sf::Vector2f(300, 20), sf::Vector2f(420, 350));
     //Platform PlayerEnd(sf::Vector2f(20, 500), sf::Vector2f(700, 0));
     platVectors = map.getPlatforms();
     PlayerEnd = map.getEnd();
+    PlayerSpawn = map.getSpawn();
+    agent.setPosition(PlayerSpawn);
     
     while (window.isOpen())
     {

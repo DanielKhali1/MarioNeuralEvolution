@@ -13,8 +13,9 @@ public:
 	void startGame();
 private:
 	MapControl map;
-	std::vector <Platform> platVectors;
+	std::vector<Platform> platVectors;
 	Platform PlayerEnd;
+	sf::Vector2f PlayerSpawn;
 protected:
 };
 

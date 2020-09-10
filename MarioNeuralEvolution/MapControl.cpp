@@ -17,6 +17,7 @@ MapControl::MapControl(int level)
 		Platforms.push_back(Platform(sf::Vector2f(300, 20), sf::Vector2f(100, 300)));
 		Platforms.push_back(Platform(sf::Vector2f(300, 20), sf::Vector2f(420, 350)));
 		PlayerEnd = Platform(sf::Vector2f(20, 500), sf::Vector2f(700, 0));
+		PlayerSpawn = sf::Vector2f(20, 20);
 	default:
 		break;
 	}
@@ -28,4 +29,12 @@ std::vector<Platform> MapControl::getPlatforms() {
 
 Platform MapControl::getEnd() {
 	return PlayerEnd;
+}
+
+std::vector<Enemy> MapControl::getEnemies() {
+	return Enemies;
+}
+
+sf::Vector2f MapControl::getSpawn() {
+	return PlayerSpawn;
 }
