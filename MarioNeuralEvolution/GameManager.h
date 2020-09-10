@@ -11,8 +11,14 @@ public:
 	void createMap(int level);
 	void startBreeding();
 	void startGame();
+	void step();
+	void DrawAll(sf::RenderWindow * window);
+	Agent* getAgent(int iterator);
 private:
 	MapControl map;
+	//will be replaced with Genetic Algorithm
+	std::vector<Agent> agents;
+	// ----------------------------------------
 	std::vector<Platform> platVectors;
 	Platform PlayerEnd;
 	sf::Vector2f PlayerSpawn;

@@ -16,54 +16,59 @@ void GameManager::startBreeding() {
 }
 
 void GameManager::startGame() {
-    sf::RenderWindow window(sf::VideoMode(720, 500), "SFML works!");
-    Agent agent(20, 20);
-    
-    //Platform platform(sf::Vector2f(200, 40), sf::Vector2f(0, 400));//TODO: Vector of Platforms
-    //Platform platform2(sf::Vector2f(300, 20), sf::Vector2f(100, 300));
-    //Platform platform3(sf::Vector2f(300, 20), sf::Vector2f(420, 350));
-    //Platform PlayerEnd(sf::Vector2f(20, 500), sf::Vector2f(700, 0));
+
+    //TODO: CHANGE TO IMPLEMENT GENETIC ALGORITHM
+    for (unsigned int i = 0; i < 1; i++)
+        agents.push_back(Agent(20, 20));
+
     platVectors = map.getPlatforms();
     PlayerEnd = map.getEnd();
     PlayerSpawn = map.getSpawn();
-    agent.setPosition(PlayerSpawn);
-    
-    while (window.isOpen())
+
+    for(unsigned int i = 0; i < agents.size(); i++)
+        agents[i].setPosition(PlayerSpawn);
+}
+
+void GameManager::step()
+{
+    for (unsigned int it = 0; it < agents.size(); it++)\
     {
-        sf::Event event;
-        while (window.pollEvent(event))
+        agents[it].Update();
+        if (agents[it].getVelocity()->y > 0) // ONLY CHECK COLLISIONS IF THE PLAYER IS FALLING DOWN
         {
-            if (event.type == sf::Event::Closed)
-                window.close();
-
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-            agent.Jump();
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            agent.MoveForward();
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            agent.MoveBackward();
-         
-
-        agent.Update();
-
-        for (unsigned int i = 0; i < platVectors.size(); i++) {
-            if (platVectors.at(i).checkCollision(agent.getPosition(), agent.getSize()))
+            for (unsigned int i = 0; i < platVectors.size(); i++) {
+                if (platVectors.at(i).checkCollision(agents[it].getPosition(), agents[it].getSize()))
+                {
+                    agents[it].setPosition(sf::Vector2f(agents[it].getPosition()->x, platVectors.at(i).getPosition()->y - agents[it].getSize()->y));
+                    agents[it].getAcceleration()->y = 0;
+                }
+            }
+            if (PlayerEnd.checkCollision(agents[it].getPosition(), agents[it].getSize()))
             {
-                agent.setPosition(sf::Vector2f(agent.getPosition()->x, platVectors.at(i).getPosition()->y - agent.getSize()->y));
-                agent.getAcceleration()->y = 0;
+                agents[it].setPosition(sf::Vector2f(20, 20));
             }
         }
-        if (PlayerEnd.checkCollision(agent.getPosition(), agent.getSize()))
-        {
-            agent.setPosition(sf::Vector2f(20, 20));
-        }
-
-        window.clear();
-        agent.Draw(&window);
-        for (unsigned int i = 0; i < platVectors.size(); i++) {
-            platVectors.at(i).Draw(&window);
-        }
-        window.display();
     }
 }
+
+void GameManager::DrawAll(sf::RenderWindow * window)
+{
+
+    window->display();
+    window->clear();
+
+    for (unsigned int i = 0; i < agents.size(); i++)
+        agents[i].Draw(window);
+    for (unsigned int i = 0; i < platVectors.size(); i++)
+        platVectors.at(i).Draw(window);
+}
+
+Agent* GameManager::getAgent(int iterator)
+{
+    return &agents[iterator];
+}
+
+
+    
+
+

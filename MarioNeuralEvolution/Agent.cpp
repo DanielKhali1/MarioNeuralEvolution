@@ -54,6 +54,11 @@ sf::Vector2f* Agent::getAcceleration()
 {
 	return &acceleration;
 }
+
+sf::Vector2f* Agent::getVelocity()
+{
+	return &velocity;
+}
  
 void Agent::Update()
 {

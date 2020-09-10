@@ -6,13 +6,8 @@ int main()
 {
     GameManager Manager;
     Manager.createMap(0);
+    sf::RenderWindow window(sf::VideoMode(720, 500), "SFML works!");
     Manager.startGame();
-    /*
-    ]sf::RenderWindow window(sf::VideoMode(720, 500), "SFML works!");
-
-    Agent agent(20, 20);
-    agent.setPosition(sf::Vector2f(20, 20));
-    Platform platform(sf::Vector2f(200, 40), sf::Vector2f(0, 400));
 
 
     while (window.isOpen())
@@ -24,30 +19,19 @@ int main()
                 window.close();
 
         }
+
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-            agent.Jump();
+            Manager.getAgent(0)->Jump();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            agent.MoveForward();
+            Manager.getAgent(0)->MoveForward();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            agent.MoveBackward();
+            Manager.getAgent(0)->MoveBackward();
 
+        Manager.step();
 
-
-
-        agent.Update();
-
-        if (platform.checkCollision(agent.getPosition(), agent.getSize()))
-        {
-            agent.setPosition(sf::Vector2f(agent.getPosition()->x, platform.getPosition()->y - agent.getSize()->y));
-            agent.getAcceleration()->y = 0;
-        }
-
-
-        window.clear();
-        agent.Draw(&window);
-        platform.Draw(&window);
-        window.display();
+        Manager.DrawAll(&window);
     }
-    */
+
+
     return 0;
 }
