@@ -40,9 +40,19 @@ void Agent::setPosition(sf::Vector2f position)
 	this->position = sf::Vector2f(position.x, position.y);
 }
 
+void Agent::setVelocity(sf::Vector2f velocity)
+{
+	this->velocity = sf::Vector2f(velocity.x, velocity.y);
+}
+
 sf::Vector2f* Agent::getPosition()
 {
 	return &position;
+}
+
+sf::Vector2f* Agent::getVelocity()
+{
+	return &velocity;
 }
 
 sf::Vector2f* Agent::getSize()
@@ -53,11 +63,6 @@ sf::Vector2f* Agent::getSize()
 sf::Vector2f* Agent::getAcceleration()
 {
 	return &acceleration;
-}
-
-sf::Vector2f* Agent::getVelocity()
-{
-	return &velocity;
 }
  
 void Agent::Update()
