@@ -16,7 +16,6 @@ void GameManager::startBreeding() {
 }
 
 void GameManager::startGame() {
-
     //TODO: CHANGE TO IMPLEMENT GENETIC ALGORITHM
     for (unsigned int i = 0; i < 1; i++)
         agents.push_back(Agent(20, 20));
@@ -59,6 +58,7 @@ void GameManager::DrawAll(sf::RenderWindow * window)
 
     for (unsigned int i = 0; i < agents.size(); i++)
         agents[i].Draw(window);
+        
     for (unsigned int i = 0; i < platVectors.size(); i++)
         platVectors.at(i).Draw(window);
 }

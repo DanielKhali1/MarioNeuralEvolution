@@ -13,11 +13,10 @@ public:
 	void Update();
 	void Draw(sf::RenderWindow* window);
 	void setPosition(sf::Vector2f position);
-	void setVelocity(sf::Vector2f velocity);
 	sf::Vector2f* getPosition();
+	sf::Vector2f* getAcceleration();
 	sf::Vector2f* getVelocity();
 	sf::Vector2f* getSize();
-	sf::Vector2f* getAcceleration();
 private:
 	float health;
 	sf::Vector2f size;
