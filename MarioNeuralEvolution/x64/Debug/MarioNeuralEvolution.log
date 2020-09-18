@@ -1,2 +1,39 @@
-﻿  main.cpp
-D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\main.cpp(1,10): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+﻿  Agent.cpp
+  Enemy.cpp
+  GameManager.cpp
+  main.cpp
+  MapControl.cpp
+  Platform.cpp
+  Generating Code...
+Agent.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __cdecl sf::Transformable::move(class sf::Vector2<float> const &)" (__imp_?move@Transformable@sf@@QEAAXAEBV?$Vector2@M@2@@Z) referenced in function "public: void __cdecl Agent::Draw(class sf::RenderWindow *)" (?Draw@Agent@@QEAAXPEAVRenderWindow@sf@@@Z)
+Platform.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: void __cdecl sf::Transformable::move(class sf::Vector2<float> const &)" (__imp_?move@Transformable@sf@@QEAAXAEBV?$Vector2@M@2@@Z)
+Agent.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __cdecl sf::RectangleShape::RectangleShape(class sf::Vector2<float> const &)" (__imp_??0RectangleShape@sf@@QEAA@AEBV?$Vector2@M@1@@Z) referenced in function "public: void __cdecl Agent::Draw(class sf::RenderWindow *)" (?Draw@Agent@@QEAAXPEAVRenderWindow@sf@@@Z)
+Platform.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: __cdecl sf::RectangleShape::RectangleShape(class sf::Vector2<float> const &)" (__imp_??0RectangleShape@sf@@QEAA@AEBV?$Vector2@M@1@@Z)
+Agent.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: virtual __cdecl sf::RectangleShape::~RectangleShape(void)" (__imp_??1RectangleShape@sf@@UEAA@XZ) referenced in function "public: void __cdecl Agent::Draw(class sf::RenderWindow *)" (?Draw@Agent@@QEAAXPEAVRenderWindow@sf@@@Z)
+Platform.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: virtual __cdecl sf::RectangleShape::~RectangleShape(void)" (__imp_??1RectangleShape@sf@@UEAA@XZ)
+Agent.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __cdecl sf::RenderTarget::draw(class sf::Drawable const &,class sf::RenderStates const &)" (__imp_?draw@RenderTarget@sf@@QEAAXAEBVDrawable@2@AEBVRenderStates@2@@Z) referenced in function "public: void __cdecl Agent::Draw(class sf::RenderWindow *)" (?Draw@Agent@@QEAAXPEAVRenderWindow@sf@@@Z)
+Platform.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: void __cdecl sf::RenderTarget::draw(class sf::Drawable const &,class sf::RenderStates const &)" (__imp_?draw@RenderTarget@sf@@QEAAXAEBVDrawable@2@AEBVRenderStates@2@@Z)
+Agent.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: static class sf::RenderStates const sf::RenderStates::Default" (__imp_?Default@RenderStates@sf@@2V12@B) referenced in function "public: void __cdecl Agent::Draw(class sf::RenderWindow *)" (?Draw@Agent@@QEAAXPEAVRenderWindow@sf@@@Z)
+Platform.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: static class sf::RenderStates const sf::RenderStates::Default" (__imp_?Default@RenderStates@sf@@2V12@B)
+GameManager.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __cdecl sf::Window::display(void)" (__imp_?display@Window@sf@@QEAAXXZ) referenced in function "public: void __cdecl GameManager::DrawAll(class sf::RenderWindow *)" (?DrawAll@GameManager@@QEAAXPEAVRenderWindow@sf@@@Z)
+main.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: void __cdecl sf::Window::display(void)" (__imp_?display@Window@sf@@QEAAXXZ)
+GameManager.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __cdecl sf::Color::Color(unsigned char,unsigned char,unsigned char,unsigned char)" (__imp_??0Color@sf@@QEAA@EEEE@Z) referenced in function "public: void __cdecl GameManager::DrawAll(class sf::RenderWindow *)" (?DrawAll@GameManager@@QEAAXPEAVRenderWindow@sf@@@Z)
+main.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: __cdecl sf::Color::Color(unsigned char,unsigned char,unsigned char,unsigned char)" (__imp_??0Color@sf@@QEAA@EEEE@Z)
+GameManager.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __cdecl sf::RenderTarget::clear(class sf::Color const &)" (__imp_?clear@RenderTarget@sf@@QEAAXAEBVColor@2@@Z) referenced in function "public: void __cdecl GameManager::DrawAll(class sf::RenderWindow *)" (?DrawAll@GameManager@@QEAAXPEAVRenderWindow@sf@@@Z)
+main.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: void __cdecl sf::RenderTarget::clear(class sf::Color const &)" (__imp_?clear@RenderTarget@sf@@QEAAXAEBVColor@2@@Z)
+main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __cdecl sf::String::String(char const *,class std::locale const &)" (__imp_??0String@sf@@QEAA@PEBDAEBVlocale@std@@@Z) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __cdecl sf::String::~String(void)" (__imp_??1String@sf@@QEAA@XZ) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: static bool __cdecl sf::Keyboard::isKeyPressed(enum sf::Keyboard::Key)" (__imp_?isKeyPressed@Keyboard@sf@@SA_NW4Key@12@@Z) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __cdecl sf::VideoMode::VideoMode(unsigned int,unsigned int,unsigned int)" (__imp_??0VideoMode@sf@@QEAA@III@Z) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __cdecl sf::Window::close(void)" (__imp_?close@Window@sf@@QEAAXXZ) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: bool __cdecl sf::Window::isOpen(void)const " (__imp_?isOpen@Window@sf@@QEBA_NXZ) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: bool __cdecl sf::Window::pollEvent(class sf::Event &)" (__imp_?pollEvent@Window@sf@@QEAA_NAEAVEvent@2@@Z) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __cdecl sf::View::View(void)" (__imp_??0View@sf@@QEAA@XZ) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __cdecl sf::View::setCenter(class sf::Vector2<float> const &)" (__imp_?setCenter@View@sf@@QEAAXAEBV?$Vector2@M@2@@Z) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __cdecl sf::View::setSize(class sf::Vector2<float> const &)" (__imp_?setSize@View@sf@@QEAAXAEBV?$Vector2@M@2@@Z) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __cdecl sf::View::move(float,float)" (__imp_?move@View@sf@@QEAAXMM@Z) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __cdecl sf::RenderTarget::setView(class sf::View const &)" (__imp_?setView@RenderTarget@sf@@QEAAXAEBVView@2@@Z) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: class sf::Vector2<int> __cdecl sf::RenderTarget::mapCoordsToPixel(class sf::Vector2<float> const &)const " (__imp_?mapCoordsToPixel@RenderTarget@sf@@QEBA?AV?$Vector2@H@2@AEBV?$Vector2@M@2@@Z) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __cdecl sf::RenderWindow::RenderWindow(class sf::VideoMode,class sf::String const &,unsigned int,struct sf::ContextSettings const &)" (__imp_??0RenderWindow@sf@@QEAA@VVideoMode@1@AEBVString@1@IAEBUContextSettings@1@@Z) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: virtual __cdecl sf::RenderWindow::~RenderWindow(void)" (__imp_??1RenderWindow@sf@@UEAA@XZ) referenced in function main
+C:\Users\Max\Documents\GitHub\MarioNeuralEvolution\x64\Debug\MarioNeuralEvolution.exe : fatal error LNK1120: 23 unresolved externals

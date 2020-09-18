@@ -2,13 +2,14 @@
 #include "Agent.h"
 #include "Platform.h"
 #include "GameManager.h"
+#include "MatrixLib.h"
+
 int main()
 {
     GameManager Manager;
     Manager.createMap(0);
-    sf::RenderWindow window(sf::VideoMode(720, 500), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(720, 500), "Super AI Bros.");
     Manager.startGame();
-
 
     while (window.isOpen())
     {

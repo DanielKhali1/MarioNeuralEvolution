@@ -154,6 +154,7 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapControl.cpp" />
+    <ClCompile Include="MatrixLib.cpp" />
     <ClCompile Include="Platform.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +163,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="MapControl.h" />
+    <ClInclude Include="MatrixLib.h" />
     <ClInclude Include="Platform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

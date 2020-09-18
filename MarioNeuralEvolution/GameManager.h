@@ -15,6 +15,7 @@ public:
 	void DrawAll(sf::RenderWindow * window);
 	Agent* getAgent(int iterator);
 private:
+
 	MapControl map;
 	//will be replaced with Genetic Algorithm
 	std::vector<Agent> agents;
