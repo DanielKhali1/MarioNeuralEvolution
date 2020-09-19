@@ -14,3 +14,7 @@
 *.exe
 *.pdb
 .vs/MarioNeuralEvolution/v16/.suo
+*.ipch
+*.tlog
+*.pdb
+*.log
