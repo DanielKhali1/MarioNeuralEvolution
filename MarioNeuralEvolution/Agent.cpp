@@ -55,6 +55,19 @@ sf::Vector2f* Agent::getSize()
 	return &size;
 }
 
+void Agent::randomAction()
+{
+	int random = rand() % 2;
+	
+	switch (random)
+	{
+		case 0: Jump();			break;
+		case 1: MoveForward();  break;
+		//case 2: MoveBackward(); break;
+
+	}
+}
+
 sf::Vector2f* Agent::getAcceleration()
 {
 	return &acceleration;
@@ -64,6 +77,7 @@ sf::Vector2f* Agent::getVelocity()
 {
 	return &velocity;
 }
+
  
 void Agent::Update()
 {

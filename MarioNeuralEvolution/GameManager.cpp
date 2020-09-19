@@ -5,7 +5,6 @@
 
 GameManager::GameManager()
 {
-
 }
 
 void GameManager::createMap(int level) {
@@ -19,7 +18,7 @@ void GameManager::startBreeding() {
 void GameManager::startGame() {
 
     //TODO: CHANGE TO IMPLEMENT GENETIC ALGORITHM
-    for (unsigned int i = 0; i < 1; i++)
+    for (unsigned int i = 0; i < 10; i++)
         agents.push_back(Agent(20, 20));
 
     platVectors = map.getPlatforms();
@@ -32,9 +31,13 @@ void GameManager::startGame() {
 
 void GameManager::step(sf::RenderWindow* window)
 {
+
+
     for (unsigned int it = 0; it < agents.size(); it++)
     {
         agents[it].Update();
+
+        agents[it].randomAction();
         if (agents[it].getVelocity()->y > 0) // ONLY CHECK COLLISIONS IF THE PLAYER IS FALLING DOWN
         {
             for (unsigned int i = 0; i < platVectors.size(); i++) {
@@ -77,17 +80,16 @@ void GameManager::step(sf::RenderWindow* window)
             furthestAgent = &(agents[i]);
             furthestXPosition = agents[i].getPosition()->x;
         }
-    
     // Screen scrolling
     if (((*window).mapCoordsToPixel(sf::Vector2f(((*furthestAgent).getPosition()->x), ((*furthestAgent).getPosition()->y))).x) > 300)
     {
         for (unsigned int i = 0; i < platVectors.size(); i++)
         {
             platVectors[i].setPosition(
-                          sf::Vector2f(platVectors[i].getPosition()->x - 2.f,
+                          sf::Vector2f(platVectors[i].getPosition()->x - 3.f,
                           platVectors[i].getPosition()->y));
         }
-        (*furthestAgent).setPosition(sf::Vector2f((*furthestAgent).getPosition()->x - 2.f, (*furthestAgent).getPosition()->y));
+        (*furthestAgent).setPosition(sf::Vector2f((*furthestAgent).getPosition()->x - 3.f, (*furthestAgent).getPosition()->y));
     }
 }
 

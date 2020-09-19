@@ -11,6 +11,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(720, 500), "SFML works!");
     Manager.startGame();
     window.setFramerateLimit(60);
+    srand(time(NULL));
 
     while (window.isOpen())
     {

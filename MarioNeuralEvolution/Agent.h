@@ -17,6 +17,7 @@ public:
 	sf::Vector2f* getAcceleration();
 	sf::Vector2f* getVelocity();
 	sf::Vector2f* getSize();
+	void randomAction();
 	bool grounded;
 private:
 	float health;
