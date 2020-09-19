@@ -2,7 +2,7 @@
 
 namespace marioConstants
 {
-	float playerMoveSpeed = 0.2f;
-	float gravity = 0.0005f;
-	float jumpVel = -0.3f;
+	float playerMoveSpeed = 2.f;
+	float gravity = 0.6f;
+	float jumpVel = -12.f;
 };

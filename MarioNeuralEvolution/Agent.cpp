@@ -4,7 +4,8 @@
 #include <SFML/Graphics.hpp>
 
 Agent::Agent(float width, float height)
-	: health(100),
+	: grounded(false),
+	health(100),
 	size(width, height),
 	position(0.0f, 0.0f),
 	velocity(0.0f, 0.0f),
@@ -25,7 +26,11 @@ void Agent::MoveBackward()
 
 void Agent::Jump()
 {
-	velocity.y = marioConstants::jumpVel;
+	if (grounded)
+	{
+		grounded = false;
+		velocity.y = marioConstants::jumpVel;
+	}
 }
 
 void Agent::Draw(sf::RenderWindow * window)
@@ -62,8 +67,10 @@ sf::Vector2f* Agent::getVelocity()
  
 void Agent::Update()
 {
-
-	acceleration.y = marioConstants::gravity;
-	velocity += acceleration;
-	position += velocity;
+	if (!grounded)
+	{
+		acceleration.y = marioConstants::gravity;
+		velocity += acceleration;
+		position += velocity;
+	}
 }

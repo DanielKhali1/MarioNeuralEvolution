@@ -2,13 +2,15 @@
 #include "Agent.h"
 #include "Platform.h"
 #include "GameManager.h"
+#include "MatrixLib.h"
+
 int main()
 {
     GameManager Manager;
     Manager.createMap(0);
     sf::RenderWindow window(sf::VideoMode(720, 500), "SFML works!");
     Manager.startGame();
-
+    window.setFramerateLimit(60);
 
     while (window.isOpen())
     {
@@ -27,7 +29,7 @@ int main()
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             Manager.getAgent(0)->MoveBackward();
 
-        Manager.step();
+        Manager.step(&window);
 
         Manager.DrawAll(&window);
     }

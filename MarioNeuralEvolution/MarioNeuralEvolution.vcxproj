@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\Downloads\MatrixLib.cpp" />
     <ClCompile Include="Agent.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -157,6 +158,7 @@
     <ClCompile Include="Platform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\Downloads\MatrixLib.h" />
     <ClInclude Include="Agent.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Enemy.h" />

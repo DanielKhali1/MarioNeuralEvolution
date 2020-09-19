@@ -11,7 +11,7 @@ public:
 	void createMap(int level);
 	void startBreeding();
 	void startGame();
-	void step();
+	void step(sf::RenderWindow* window);
 	void DrawAll(sf::RenderWindow * window);
 	Agent* getAgent(int iterator);
 private:
