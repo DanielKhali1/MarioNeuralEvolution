@@ -149,21 +149,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Downloads\MatrixLib.cpp" />
     <ClCompile Include="Agent.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapControl.cpp" />
+    <ClCompile Include="MatrixLib.cpp" />
+    <ClCompile Include="NeuralNetwork.cpp" />
     <ClCompile Include="Platform.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Downloads\MatrixLib.h" />
     <ClInclude Include="Agent.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="MapControl.h" />
+    <ClInclude Include="MatrixLib.h" />
+    <ClInclude Include="NeuralNetwork.h" />
     <ClInclude Include="Platform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
