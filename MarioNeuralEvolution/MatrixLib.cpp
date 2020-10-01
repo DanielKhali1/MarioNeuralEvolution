@@ -46,20 +46,20 @@ void MatrixLib::SetLayer(float* set, int nzsize, int row) {
 	for (int i = 0; i < nzsize; i++) {
 		matrix[row][i] = set[i];
 	}
-	for (int i = nzsize; i < width; i++) {
+	for (unsigned int i = nzsize; i < width; i++) {
 		matrix[row][i] = 0.0;
 	}
 }
 void MatrixLib::Shift(){
-	for (int i = 0; i < width; i++) {
+	for (unsigned int i = 0; i < width; i++) {
 		matrix[0][i] = matrix[1][i];
 	}
-	for (int i = 0; i < width; i++) {
+	for (unsigned int i = 0; i < width; i++) {
 		matrix[1][i] = 0.0;
 	}
 }
 void MatrixLib::Set(float set, int row, int col) {
-	*(*(matrix + i) + j) = set;
+	*(*(matrix + row) + col) = set;
 }
 void MatrixLib::mult(float coef){
 	for (unsigned int i = 0; i < this->height; i++) {

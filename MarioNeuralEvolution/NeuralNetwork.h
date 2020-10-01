@@ -3,10 +3,9 @@ class NeuralNetwork
 {
 public:
 	NeuralNetwork(unsigned int[3]); //todo: variation
-	float sigmoid(float d);
 	float* feedforward(float * inputs, unsigned int numinputs);
+	float sigmoid(float d);
 private:
-	MatrixLib** weights; 
 	float** biases; 
 	unsigned int* sizes;
 protected:

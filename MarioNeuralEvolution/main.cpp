@@ -3,9 +3,19 @@
 #include "Platform.h"
 #include "GameManager.h"
 #include "MatrixLib.h"
+#include "NeuralNetwork.h"
+#include <iostream> 
 
 int main()
 {
+    unsigned int sample[3] = { 2, 1, 2 };
+    NeuralNetwork network(sample);
+    float inputs[] = { 1, 2 };
+    float* goin = inputs;
+    float* results = network.feedforward(goin, 2);
+    std::cout << results[0];
+    std::cout << results[0];
+    
     GameManager Manager;
     Manager.createMap(0);
     sf::RenderWindow window(sf::VideoMode(720, 500), "SFML works!");
