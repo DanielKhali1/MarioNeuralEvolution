@@ -1,22 +1,31 @@
 #include "MatrixLib.h"
 #include <iostream>
 
-MatrixLib::MatrixLib() {
-
-}
 MatrixLib::MatrixLib(unsigned int width, unsigned int height)
 {
 	this->width = width; //componentsof
 	this->height = height; //numVectors
-	matrix = (float**)malloc(sizeof(float*) * height);
+	matrix = (float**)malloc(sizeof(float*) * (height+1));
 	for (unsigned int i = 0; i < height; i++) {
-		*(matrix + i) = (float*)malloc(sizeof(float) * width) ; //*(*(matrix + i) +j ) == matrix[i][j]
+		*(matrix + i) = (float*)malloc(sizeof(float) * (width+1)) ; //*(*(matrix + i) +j ) == matrix[i][j]
 		for (unsigned int j = 0; j < width; j++) {
 			//assign
 			//*(*(matrix + i) +j ) == matrix[i][j]
-			*(*(matrix + i) + j) = 0.0;
+			*(*(matrix + i) + j) = 0.0f;
 		}
 	}
+}
+float* MatrixLib::DotProduct(float* mult) {
+	float* totals = new float[width];
+	for (unsigned int i = 0; i < width; i++) {
+		totals[i] = 0;
+	}
+	for (unsigned int i = 0; i < width; i++) {
+		for (unsigned int ii = 0; ii < height; ii++) {
+			totals[i] += mult[ii] * matrix[ii][i]; //check orientation
+		}
+	}
+	return totals;
 }
 float MatrixLib::DotProduct(MatrixLib* mult) { //Frobenius inner product... I think
 	float totals = 0;

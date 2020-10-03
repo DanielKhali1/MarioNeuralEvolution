@@ -1,18 +1,20 @@
 #include "NeuralNetwork.h"
 #include "MatrixLib.h"
 #include <cstdlib>
-MatrixLib*** weights;
-NeuralNetwork::NeuralNetwork(unsigned int sizes[3]) {
+
+NeuralNetwork::NeuralNetwork(unsigned int sizes[3], unsigned int numinputs) {//todo : cleanup unused code
 	this->sizes = sizes;
-	weights = new MatrixLib**[sizeof(sizes)];
+	weights.push_back(MatrixLib(sizes[0], numinputs));
+	for (unsigned int i = 0; i < (sizeof(sizes) -1); i++) {
+		weights.push_back(MatrixLib(sizes[i], sizes[i-1]));
+	}
+	/*weights = new MatrixLib**[sizeof(sizes)];
 	for (unsigned int i = 0; i < sizeof(sizes); i++) {
 		weights[i] = new MatrixLib*[sizes[i]];
 		for (unsigned int ii = 0; ii < sizes[i]; ii++) {
 			weights[i][ii] = new MatrixLib(sizes[i], 1);
 		}
-	}
-
-
+	}*/
 	//weights = (MatrixLib**)malloc(sizeof(MatrixLib*) * sizeof(sizes));
 	//for (unsigned int i = 0; i < sizes[i]; i++) {
 	//	*(weights + i) = (MatrixLib*)malloc(sizeof(MatrixLib) * sizes[i]);
@@ -21,11 +23,10 @@ NeuralNetwork::NeuralNetwork(unsigned int sizes[3]) {
 	for (unsigned int i = 0; i < sizes[i]; i++) {
 		*(biases + i) = (float*)malloc(sizeof(float) * sizes[i]);
 	}*/
-	biases = new float* [sizeof(sizes)];
+	biases = new float* [sizeof(sizes)+1];
 	for (unsigned int i = 0; i < sizeof(sizes); i++) {
 		biases[i] = new float[sizes[i]];
 	}
-
 	/*for (unsigned int i = 0; i < sizeof(sizes); i++) {
 		for (unsigned int ii = 0; ii < sizes[i]; ii++) { 
 			weights[i][ii] = MatrixLib(sizes[i], 1); // assigning neuron ii in row (i+1) 's weights from size of neuron layer before it.
@@ -49,23 +50,22 @@ float* NeuralNetwork::feedforward(float* inputs, unsigned int numinputs) {
 			bigsize = sizes[i];
 		}
 	}
-	MatrixLib intermediate = MatrixLib(bigsize, 2);
-	MatrixLib* mult = &intermediate; //is this how you do that
-	intermediate.SetLayer(inputs, sizes[0], 1);
-	for (unsigned int i = 0; i < (sizeof(sizes) - 1); i++) { //setup done, feeding forward now
-		for (unsigned int ii = 0; ii < sizes[i]; ii++) {
-			float d = weights[i][ii]->DotProduct(mult) + biases[i][ii];
-			float sig = this->sigmoid(d);
-			intermediate.Set(sig, 2, ii); // results of sigmoid are stored on 2nd row
-		}
-		intermediate.Shift(); //move sigmoids to new input spot
+	float* intermediate = new float[bigsize];
+	for (unsigned int i = 0; i < numinputs; i++) {
+		intermediate[i] = inputs[i];
 	}
-	float finals[3];
-	for (int i = 0; i < 3; i++) {
+	for (unsigned int i = 0; i < weights.size(); i++) { //setup done, feeding forward now
+		intermediate = weights[i].DotProduct(intermediate);//all products dotted for the next layer
+		for (unsigned int ii = 0; ii < sizes[i]; ii++) {//adding bias to all the nodes
+			intermediate[ii] += biases[i][ii]; // i being the layer it's going to, ii being the respective node in that layer
+			//for some reason ii gets super big here
+		}
+	}
+	/*for (int i = 0; i < 3; i++) {
 		float fd = weights[sizeof(sizes) - 1][i]->DotProduct(mult) + biases[sizeof(sizes) - 1][i];
 		finals[i]= this->sigmoid(fd);
-	}
-	return finals;
+	}*/
+	return intermediate;
 }
 float NeuralNetwork::sigmoid(float d) {
 	float value = (float) (1 / (1 + exp(-d)));

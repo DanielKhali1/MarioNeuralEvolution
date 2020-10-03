@@ -9,12 +9,12 @@
 int main()
 {
     unsigned int sample[3] = { 2, 1, 2 };
-    NeuralNetwork network(sample);
-    float inputs[] = { 1, 2 };
+    NeuralNetwork network(sample, 3);
+    float inputs[] = {1, 2, 1};
     float* goin = inputs;
-    float* results = network.feedforward(goin, 2);
+    float* results = network.feedforward(goin, 3);
     std::cout << results[0];
-    std::cout << results[0];
+    std::cout << results[1];
     
     GameManager Manager;
     Manager.createMap(0);
