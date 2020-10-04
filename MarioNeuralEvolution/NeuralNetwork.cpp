@@ -2,10 +2,10 @@
 #include "MatrixLib.h"
 #include <cstdlib>
 
-NeuralNetwork::NeuralNetwork(unsigned int sizes[3], unsigned int numinputs) {//todo : cleanup unused code
+NeuralNetwork::NeuralNetwork(unsigned int* sizes, unsigned int numinputs) {//todo : cleanup unused code
 	this->sizes = sizes;
 	weights.push_back(MatrixLib(sizes[0], numinputs));
-	for (unsigned int i = 0; i < (sizeof(sizes) -1); i++) {
+	for (unsigned int i = 1; i < 3; i++) { //getting rid of sizeof here fixed the width being stupid but idk why
 		weights.push_back(MatrixLib(sizes[i], sizes[i-1]));
 	}
 	/*weights = new MatrixLib**[sizeof(sizes)];

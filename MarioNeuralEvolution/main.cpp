@@ -8,8 +8,8 @@
 
 int main()
 {
-    unsigned int sample[3] = { 2, 1, 2 };
-    NeuralNetwork network(sample, 3);
+    unsigned int sample[3] = { 3, 1, 2 };
+    NeuralNetwork network(&sample[0], 3); //this randomly worked, like twice out of 10 times. There is some sort of memory issue that is inconsistant between trials.
     float inputs[] = {1, 2, 1};
     float* goin = inputs;
     float* results = network.feedforward(goin, 3);

@@ -4,7 +4,7 @@
 class NeuralNetwork
 {
 public:
-	NeuralNetwork(unsigned int sizes[3], unsigned int numinputs); //todo: variation
+	NeuralNetwork(unsigned int* sizes, unsigned int numinputs); //todo: variation
 	float* feedforward(float * inputs, unsigned int numinputs);
 	float sigmoid(float d);
 private:

@@ -5,15 +5,23 @@ MatrixLib::MatrixLib(unsigned int width, unsigned int height)
 {
 	this->width = width; //componentsof
 	this->height = height; //numVectors
-	matrix = (float**)malloc(sizeof(float*) * (height+1));
+
+	matrix = new float* [height]; 
+	for (unsigned int i = 0; i < height; i++) {
+		matrix[i] = new float[width];
+		for (unsigned int j = 0; j < width; j++) {
+			matrix[i][j] = 1.0f;
+		}
+	} //same sort of error with new or malloc....
+	/*matrix = (float**)malloc(sizeof(float*) * (height+1));
 	for (unsigned int i = 0; i < height; i++) {
 		*(matrix + i) = (float*)malloc(sizeof(float) * (width+1)) ; //*(*(matrix + i) +j ) == matrix[i][j]
 		for (unsigned int j = 0; j < width; j++) {
 			//assign
 			//*(*(matrix + i) +j ) == matrix[i][j]
-			*(*(matrix + i) + j) = 0.0f;
+			*(*(matrix + i) + j) = 1.0f;
 		}
-	}
+	}*/
 }
 float* MatrixLib::DotProduct(float* mult) {
 	float* totals = new float[width];
