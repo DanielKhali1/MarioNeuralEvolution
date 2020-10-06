@@ -2,10 +2,10 @@
 #include "MatrixLib.h"
 #include <cstdlib>
 
-NeuralNetwork::NeuralNetwork(unsigned int* sizes, unsigned int numinputs) {//todo : cleanup unused code
-	this->sizes = sizes;
+NeuralNetwork::NeuralNetwork(unsigned int* sizein, unsigned int numinputs) {//todo : cleanup unused code
+	this->sizes = sizein;
 	weights.push_back(MatrixLib(sizes[0], numinputs));
-	for (unsigned int i = 1; i < 3; i++) { //getting rid of sizeof here fixed the width being stupid but idk why
+	for (unsigned int i = 1; i < sizeof(sizes) - 1; i++) { //setting the bounds to -1 "fixes" this but idk why
 		weights.push_back(MatrixLib(sizes[i], sizes[i-1]));
 	}
 	/*weights = new MatrixLib**[sizeof(sizes)];
@@ -58,7 +58,7 @@ float* NeuralNetwork::feedforward(float* inputs, unsigned int numinputs) {
 		intermediate = weights[i].DotProduct(intermediate);//all products dotted for the next layer
 		for (unsigned int ii = 0; ii < sizes[i]; ii++) {//adding bias to all the nodes
 			intermediate[ii] += biases[i][ii]; // i being the layer it's going to, ii being the respective node in that layer
-			//for some reason ii gets super big here
+			intermediate[ii] = sigmoid(intermediate[ii]);
 		}
 	}
 	/*for (int i = 0; i < 3; i++) {

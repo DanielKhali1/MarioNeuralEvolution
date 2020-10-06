@@ -14,6 +14,7 @@ int main()
     float* goin = inputs;
     float* results = network.feedforward(goin, 3);
     std::cout << results[0];
+    std::cout << '\n';
     std::cout << results[1];
     
     GameManager Manager;
