@@ -152,6 +152,7 @@
     <ClCompile Include="Agent.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="GeneticAlgorithm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapControl.cpp" />
     <ClCompile Include="MatrixLib.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GeneticAlgorithm.h" />
     <ClInclude Include="MapControl.h" />
     <ClInclude Include="MatrixLib.h" />
     <ClInclude Include="NeuralNetwork.h" />
