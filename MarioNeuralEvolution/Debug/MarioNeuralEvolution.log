@@ -1,4 +1,14 @@
-﻿  main.cpp
-main.obj : error LNK2001: unresolved external symbol "public: static class sf::RenderStates const sf::RenderStates::Default" (?Default@RenderStates@sf@@2V12@B)
-main.obj : error LNK2001: unresolved external symbol "public: static class sf::Color const sf::Color::Green" (?Green@Color@sf@@2V12@B)
-C:\Users\Danny\source\repos\MarioNeuralEvolution\Debug\MarioNeuralEvolution.exe : fatal error LNK1120: 2 unresolved externals
+﻿  Agent.cpp
+  Enemy.cpp
+  GameManager.cpp
+  main.cpp
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\main.cpp(24,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  MapControl.cpp
+  MatrixLib.cpp
+  NeuralNetwork.cpp
+  Platform.cpp
+  Generating Code...
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\NeuralNetwork.cpp(67): warning C4172: returning address of local variable or temporary: finals
+Agent.obj : error LNK2001: unresolved external symbol "public: static class sf::RenderStates const sf::RenderStates::Default" (?Default@RenderStates@sf@@2V12@B)
+Platform.obj : error LNK2001: unresolved external symbol "public: static class sf::RenderStates const sf::RenderStates::Default" (?Default@RenderStates@sf@@2V12@B)
+D:\AITesting\MarioNeuralEvolution\Debug\MarioNeuralEvolution.exe : fatal error LNK1120: 1 unresolved externals
