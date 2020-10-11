@@ -21,8 +21,20 @@ void GeneticAlgorithm::evolve()
 	agent = newagents;
 }
 
-Agent* GeneticAlgorithm::selection()
+Agent GeneticAlgorithm::selection(int popSize)
 {
+	//ME
+	Agent temp(0, 0), temp1(0, 0), temp2(0, 0), temp3(0, 0);
+	temp = agent[rand() % popSize];
+	temp1 = agent[rand() % popSize];
+	temp2 = agent[rand() % popSize];
+	temp3 = agent[rand() % popSize];
+
+	temp = topAgent(temp, temp1);
+	temp1 = topAgent(temp2, temp3);
+
+	return topAgent(temp, temp1);
+
 	//Double competition
 	//GetRandom(Agent) * 4
 	//Competition twice
@@ -83,8 +95,17 @@ void GeneticAlgorithm::mutation(Agent radboy)
 	//Has a 1% chance to change the weight to a random value from crossover
 }
 
-Agent* GeneticAlgorithm::topAgent()
+Agent GeneticAlgorithm::topAgent(Agent agent0, Agent agent1)
 {
+	//Me
+	if (agent0.getPosition()->x > agent1.getPosition()->x)
+	{
+		return agent0;
+	}
+	else
+	{
+		return agent1;
+	}
 
 }
 
