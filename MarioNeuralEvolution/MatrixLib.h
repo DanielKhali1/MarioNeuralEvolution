@@ -10,6 +10,7 @@ public:
 	void SetLayer(float* set, int nzsize, int row); //likely unneeded
 	void Set(float set, int row, int col);
 	void Shift(); //likely unneeded
+	float** getMatrix();
 private:
 	float** matrix;
 	unsigned int width;

@@ -3,16 +3,25 @@
 #include "Constants.h"
 #include <SFML/Graphics.hpp>
 
-Agent::Agent(float width, float height)
+Agent::Agent(float width, float height, unsigned int* sizein, unsigned int inputs, unsigned int arrsize)
 	: grounded(false),
-	health(100),
 	size(width, height),
 	position(0.0f, 0.0f),
 	velocity(0.0f, 0.0f),
-	acceleration(0.0f, 0.0f)
+	acceleration(0.0f, 0.0f),
+	network(sizein, inputs, arrsize),
+	sizein(sizein),
+	inputs(inputs),
+	arrsize(arrsize)
 {
 
 }
+
+NeuralNetwork* Agent::getNetwork()
+{
+	return &network;
+}
+
 
 void Agent::MoveForward()
 {

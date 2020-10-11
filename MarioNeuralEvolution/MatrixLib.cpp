@@ -108,3 +108,7 @@ void MatrixLib::addition(MatrixLib* add) {
 		}
 	}
 }
+
+float** MatrixLib::getMatrix() {
+	return matrix;
+}

@@ -1,8 +1,21 @@
-﻿  main.cpp
-D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\main.cpp(25,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Generating code
-  9 of 246 functions ( 3.7%) were compiled, the rest were copied from previous compilation.
-    8 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  MarioNeuralEvolution.vcxproj -> D:\AITesting\MarioNeuralEvolution\Release\MarioNeuralEvolution.exe
+﻿  Agent.cpp
+  GameManager.cpp
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\GameManager.cpp(22,38): error C2440: '<function-style-cast>': cannot convert from 'initializer list' to 'Agent'
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\GameManager.cpp(22,38): message : No constructor could take the source type, or constructor overload resolution was ambiguous
+  GeneticAlgorithm.cpp
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\GeneticAlgorithm.cpp(5,29): warning C4018: '<': signed/unsigned mismatch
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\GeneticAlgorithm.cpp(7,31): error C2440: '<function-style-cast>': cannot convert from 'initializer list' to 'Agent'
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\GeneticAlgorithm.cpp(7,31): message : No constructor could take the source type, or constructor overload resolution was ambiguous
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\GeneticAlgorithm.cpp(33,20): warning C4018: '<': signed/unsigned mismatch
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\GeneticAlgorithm.cpp(36,20): warning C4018: '<': signed/unsigned mismatch
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\GeneticAlgorithm.cpp(37,23): warning C4018: '<': signed/unsigned mismatch
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\GeneticAlgorithm.cpp(38,26): warning C4018: '<': signed/unsigned mismatch
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\GeneticAlgorithm.cpp(45,6): error C2065: 'dweight': undeclared identifier
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\GeneticAlgorithm.cpp(47,5): error C2059: syntax error: '}'
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\GeneticAlgorithm.cpp(48,41): error C2660: 'MatrixLib::Set': function does not take 0 arguments
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\MatrixLib.h(11,7): message : see declaration of 'MatrixLib::Set'
+  main.cpp
+D:\AITesting\MarioNeuralEvolution\MarioNeuralEvolution\main.cpp(16,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  MapControl.cpp
+  MatrixLib.cpp
+  NeuralNetwork.cpp

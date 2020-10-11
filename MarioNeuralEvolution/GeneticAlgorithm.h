@@ -11,11 +11,12 @@ public:
 
 	void evolve();
 	Agent* selection();
-	Agent* crossover();
-	Agent* mutation();
+	Agent crossover();
+	void mutation(Agent radboy);
 	Agent* topAgent();
 
 private:
+	int popSize;
 
 protected:
 
