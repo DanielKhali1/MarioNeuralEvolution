@@ -2,10 +2,10 @@
 #include "MatrixLib.h"
 #include <cstdlib>
 
-NeuralNetwork::NeuralNetwork(unsigned int* sizein, unsigned int numinputs, unsigned int arrsize) {//todo : cleanup unused code
+NeuralNetwork::NeuralNetwork(unsigned int* sizein, unsigned int numinputs) {//todo : cleanup unused code
 	this->sizes = sizein;
 	weights.push_back(MatrixLib(sizes[0], numinputs));
-	for (unsigned int i = 1; i < arrsize; i++) { //changed sizeof() to arrsize, an inherited value. This has NOT been tested. 
+	for (unsigned int i = 1; i < sizeof(sizes) - 1; i++) { //setting the bounds to -1 "fixes" this but idk why
 		weights.push_back(MatrixLib(sizes[i], sizes[i-1]));
 	}
 	/*weights = new MatrixLib**[sizeof(sizes)];
@@ -23,8 +23,8 @@ NeuralNetwork::NeuralNetwork(unsigned int* sizein, unsigned int numinputs, unsig
 	for (unsigned int i = 0; i < sizes[i]; i++) {
 		*(biases + i) = (float*)malloc(sizeof(float) * sizes[i]);
 	}*/
-	biases = new float* [arrsize];
-	for (unsigned int i = 0; i < arrsize; i++) {
+	biases = new float* [sizeof(sizes)+1];
+	for (unsigned int i = 0; i < sizeof(sizes); i++) {
 		biases[i] = new float[sizes[i]];
 	}
 	/*for (unsigned int i = 0; i < sizeof(sizes); i++) {
@@ -36,7 +36,7 @@ NeuralNetwork::NeuralNetwork(unsigned int* sizein, unsigned int numinputs, unsig
 	for (unsigned int i = 0; i < 3; i++) {
 		weights[sizeof(sizes)-1][i] = MatrixLib(sizes[sizeof(sizes) - 2], 1); // assigning neuron i in last row's weights from the size of the 2nd to last layer.
 	}*/
-	for (unsigned int i = 0; i < arrsize; i++) {
+	for (unsigned int i = 0; i < sizeof(sizes); i++) {
 		for (unsigned int ii = 0; ii < sizes[i]; ii++) {
 			//biases[i][ii] = rand() % 2 + 1;
 			biases[i][ii] = 1;
@@ -66,12 +66,6 @@ float* NeuralNetwork::feedforward(float* inputs, unsigned int numinputs) {
 		finals[i]= this->sigmoid(fd);
 	}*/
 	return intermediate;
-}
-MatrixLib* NeuralNetwork::getLib(int numreq) {
-	return &weights[numreq];
-}
-float** NeuralNetwork::getBiases() {
-	return biases;
 }
 float NeuralNetwork::sigmoid(float d) {
 	float value = (float) (1 / (1 + exp(-d)));

@@ -10,13 +10,12 @@ public:
 	int generation;
 
 	void evolve();
-	Agent* selection();
+	Agent selection(int popSize);
 	Agent crossover();
-	void mutation(Agent radboy);
-	Agent* topAgent();
+	Agent mutation();
+	Agent topAgent(Agent agent0, Agent agent1);
 
 private:
-	int popSize;
 
 protected:
 

@@ -100,18 +100,22 @@ MapControl::MapControl(int level)
 	}
 }
 
-std::vector<Platform> MapControl::getPlatforms() {
+std::vector<Platform> MapControl::getPlatforms() 
+{
 	return Platforms;
 }
 
-Platform MapControl::getEnd() {
+Platform MapControl::getEnd() 
+{
 	return PlayerEnd;
 }
 
-std::vector<Enemy> MapControl::getEnemies() {
+std::vector<Enemy> MapControl::getEnemies() 
+{
 	return Enemies;
 }
 
-sf::Vector2f MapControl::getSpawn() {
+sf::Vector2f MapControl::getSpawn() 
+{
 	return PlayerSpawn;
 }

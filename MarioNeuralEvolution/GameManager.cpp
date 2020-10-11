@@ -5,13 +5,16 @@
 
 GameManager::GameManager()
 {
+
 }
 
-void GameManager::createMap(int level) {
+void GameManager::createMap(int level) 
+{
     map = MapControl(level);
 }
 
-void GameManager::startBreeding() {
+void GameManager::startBreeding() 
+{
 
 }
 

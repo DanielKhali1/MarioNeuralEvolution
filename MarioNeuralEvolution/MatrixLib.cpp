@@ -23,8 +23,10 @@ MatrixLib::MatrixLib(unsigned int width, unsigned int height)
 		}
 	}*/
 }
-float* MatrixLib::DotProduct(float* mult) {
+float* MatrixLib::DotProduct(float* mult) 
+{
 	float* totals = new float[width];
+
 	for (unsigned int i = 0; i < width; i++) {
 		totals[i] = 0;
 	}
@@ -35,23 +37,31 @@ float* MatrixLib::DotProduct(float* mult) {
 	}
 	return totals;
 }
-float MatrixLib::DotProduct(MatrixLib* mult) { //Frobenius inner product... I think
+float MatrixLib::DotProduct(MatrixLib* mult) 
+{ //Frobenius inner product... I think
+
 	float totals = 0;
 	unsigned int minRows = 0;
 	unsigned int minComp = 0;
 	float** multMat = mult->matrix;
-	if (this->height < mult->height ) {
+
+	if (this->height < mult->height ) 
+	{
 		minRows = this->height;
-	} else {
+	} else 
+	{
 		minRows = mult->height;
 	}
-	if (this->width < mult->width) {
+	if (this->width < mult->width) 
+	{
 		minComp = this->width;
-	} else {
+	} else 
+	{
 		minComp = mult->width;
 	}
 	for (unsigned int i = 0; i < minRows; i++) {
-		for (unsigned int j = 0; j < minComp; j++) {
+		for (unsigned int j = 0; j < minComp; j++) 
+		{
 			float a = 0;
 			float b = 0;
 			totals += *(*(multMat + i) + j) * *(*(matrix + i) + j);
@@ -59,33 +69,46 @@ float MatrixLib::DotProduct(MatrixLib* mult) { //Frobenius inner product... I th
 	}
 	return totals;
 }
-void MatrixLib::SetLayer(float* set, int nzsize, int row) {
-	for (int i = 0; i < nzsize; i++) {
+void MatrixLib::SetLayer(float* set, int nzsize, int row) 
+{
+	for (int i = 0; i < nzsize; i++) 
+	{
 		matrix[row][i] = set[i];
 	}
-	for (unsigned int i = nzsize; i < width; i++) {
+	for (unsigned int i = nzsize; i < width; i++) 
+	{
 		matrix[row][i] = 0.0;
 	}
 }
-void MatrixLib::Shift(){
-	for (unsigned int i = 0; i < width; i++) {
+void MatrixLib::Shift()
+{
+	for (unsigned int i = 0; i < width; i++) 
+	{
 		matrix[0][i] = matrix[1][i];
 	}
-	for (unsigned int i = 0; i < width; i++) {
+	for (unsigned int i = 0; i < width; i++) 
+	{
 		matrix[1][i] = 0.0;
 	}
 }
-void MatrixLib::Set(float set, int row, int col) {
+
+void MatrixLib::Set(float set, int row, int col)
+{
 	*(*(matrix + row) + col) = set;
 }
-void MatrixLib::mult(float coef){
-	for (unsigned int i = 0; i < this->height; i++) {
-		for (unsigned int j = 0; j < this->width; j++) {
+
+void MatrixLib::mult(float coef)
+{
+	for (unsigned int i = 0; i < this->height; i++)
+	{
+		for (unsigned int j = 0; j < this->width; j++) 
+		{
 			*(*(matrix + i) + j) = *(*(matrix + i) + j) * coef;
 		}
 	}
 }
-void MatrixLib::addition(MatrixLib* add) {
+void MatrixLib::addition(MatrixLib* add)
+{
 	float totals = 0;
 	unsigned int minRows = 0;
 	unsigned int minComp = 0;
@@ -107,8 +130,4 @@ void MatrixLib::addition(MatrixLib* add) {
 			*(*(matrix + i) + j) = *(*(addMat + i) + j) + *(*(matrix + i) + j);
 		}
 	}
-}
-
-float** MatrixLib::getMatrix() {
-	return matrix;
 }
