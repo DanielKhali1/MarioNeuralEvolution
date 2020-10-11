@@ -45,7 +45,7 @@ Agent GeneticAlgorithm::crossover()
 			for (int iii = 0; iii < networksizes[i + 1]; iii++) {//per connection
 				float dweight = 0;
 				float dbias = 0;
-				if (rand() % 2) {
+				if (rand() % 2) {//50% chance
 					dweight = parentA->getNetwork()->getLib(i)->getMatrix()[ii][iii];
 					dbias = parentA->getNetwork()->getBiases()[ii][iii];
 				}
