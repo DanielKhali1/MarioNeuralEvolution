@@ -1,14 +1,16 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Platform.h"
+#include <iostream>
 
 class Agent
 {
 
 public:
 	Agent(float width, float height);
-	void MoveForward();
-	void MoveBackward();
+	void MoveForward(std::vector<Platform>* platforms);
+	void MoveBackward(std::vector<Platform>* platforms);
 	void Jump();
 	void Update();
 	void Draw(sf::RenderWindow* window);
@@ -17,8 +19,9 @@ public:
 	sf::Vector2f* getAcceleration();
 	sf::Vector2f* getVelocity();
 	sf::Vector2f* getSize();
-	void randomAction();
+	void randomAction(std::vector<Platform> * platforms);
 	bool grounded;
+	bool alreadyCollided = false;
 private:
 	float health;
 	sf::Vector2f size;

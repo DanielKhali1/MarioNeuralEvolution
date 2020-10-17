@@ -1,6 +1,7 @@
 #include "Agent.h"
 #include "Agent.h"
 #include "Constants.h"
+#include "Platform.h"
 #include <SFML/Graphics.hpp>
 
 Agent::Agent(float width, float height)
@@ -14,14 +15,30 @@ Agent::Agent(float width, float height)
 
 }
 
-void Agent::MoveForward()
+void Agent::MoveForward(std::vector<Platform>* platforms)
 {
 	position.x += marioConstants::playerMoveSpeed;
+	if(!grounded && !this->alreadyCollided)
+		for (unsigned int i = 0; i < (*platforms).size(); i++)
+			if (!(*platforms).at(i).isground && (*platforms).at(i).checkCollision(this->getPosition(), this->getSize()))
+			{
+				std::cout << "forward collision" << std::endl;
+				this->setPosition(sf::Vector2f((*platforms).at(i).getPosition()->x - getSize()->x, this->getPosition()->y));
+				this->alreadyCollided = true;
+			}
 }
 
-void Agent::MoveBackward()
+void Agent::MoveBackward(std::vector<Platform>* platforms)
 {
 	position.x -= marioConstants::playerMoveSpeed;
+	if(!grounded && !this->alreadyCollided)
+		for (unsigned int i = 0; i < (*platforms).size(); i++)
+			if (!(*platforms).at(i).isground && (*platforms).at(i).checkCollision(this->getPosition(), this->getSize()))
+			{
+				std::cout << "forward collision" << std::endl;
+				this->setPosition(sf::Vector2f((*platforms).at(i).getPosition()->x + (*platforms).at(i).getSize()->x, this->getPosition()->y));
+				this->alreadyCollided = true;
+			}
 }
 
 void Agent::Jump()
@@ -55,15 +72,15 @@ sf::Vector2f* Agent::getSize()
 	return &size;
 }
 
-void Agent::randomAction()
+void Agent::randomAction(std::vector<Platform>* platforms)
 {
 	int random = rand() % 2;
 	
 	switch (random)
 	{
-		case 0: Jump();			break;
-		case 1: MoveForward();  break;
-		//case 2: MoveBackward(); break;
+		case 0: Jump();					 break;
+		case 1: MoveForward(platforms);  break;
+		case 2: MoveBackward(platforms); break;
 
 	}
 }

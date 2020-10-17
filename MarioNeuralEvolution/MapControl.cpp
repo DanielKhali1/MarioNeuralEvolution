@@ -98,6 +98,8 @@ MapControl::MapControl(int level)
 	default:
 		break;
 	}
+    Platforms[0].isground = true;
+
 }
 
 std::vector<Platform> MapControl::getPlatforms() {
