@@ -8,15 +8,19 @@
 
 int main()
 {
-    GameManager Manager;
+    GameManager Manager; 
     Manager.createMap(0);
-    sf::RenderWindow window(sf::VideoMode(720, 500), "SFML works!");
+    std::cout << Manager.getAgent(1)->sizein[0] << 'j';
+    sf::RenderWindow window(sf::VideoMode(720, 500), "SFML works!"); //sizein goes from {5, 5, 3} to {720, 500, 32} here somehow
+    std::cout << Manager.getAgent(1)->sizein[0] << 'h';
     Manager.startGame();
     window.setFramerateLimit(60);
     srand(time(NULL));
+    
 
     while (window.isOpen())
     {
+
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -33,8 +37,9 @@ int main()
             Manager.getAgent(0)->MoveBackward();
 
         Manager.step(&window);
-
+        
         Manager.DrawAll(&window);
+
     }
 
 

@@ -11,6 +11,7 @@ public:
 	float** biases;
 	MatrixLib* getLib(int numreq);
 	float** getBiases();
+	unsigned int bigsize;
 private:
 	unsigned int* sizes;
 protected:

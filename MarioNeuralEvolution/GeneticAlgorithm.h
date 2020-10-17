@@ -5,18 +5,18 @@ class GeneticAlgorithm
 {
 public:
 
-	GeneticAlgorithm(int popSize);
-	std::vector<Agent> agent;
+	GeneticAlgorithm(unsigned int popSize);
+	unsigned int popSize;
 	int generation;
-
 	void evolve();
 	Agent selection();
 	Agent crossover();
 	void mutation(Agent radboy);
 	Agent topAgent(Agent agent0, Agent agent1);
+	std::vector<Agent> agent;
 
 private:
-	int popSize;
+	
 
 protected:
 

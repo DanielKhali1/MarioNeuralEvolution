@@ -1,58 +1,39 @@
 #include "NeuralNetwork.h"
 #include "MatrixLib.h"
 #include <cstdlib>
+#include <iostream>
 
-NeuralNetwork::NeuralNetwork(unsigned int* sizein, unsigned int numinputs, unsigned int arrsize) {//todo : cleanup unused code
-	this->sizes = sizein;
+NeuralNetwork::NeuralNetwork(unsigned int* sizein, unsigned int numinputs, unsigned int arrsize) : sizes(sizein) {//todo : cleanup unused code
+	//this->sizes = sizein;
+	unsigned int tempsize = 0;
+	for (unsigned int i = 0; i < arrsize; i++) {
+		if (sizes[i] > tempsize) {
+			tempsize = sizes[i];
+		}
+	}
+	this->bigsize = tempsize;
+	for (unsigned int i = 0; i < arrsize; i++) { // debug
+	}
 	weights.push_back(MatrixLib(sizes[0], numinputs));
 	for (unsigned int i = 1; i < arrsize; i++) { //changed sizeof() to arrsize, an inherited value. This has NOT been tested. 
-		weights.push_back(MatrixLib(sizes[i], sizes[i-1]));
+		weights.push_back(MatrixLib(sizes[i], sizes[i-1])); 
 	}
-	/*weights = new MatrixLib**[sizeof(sizes)];
-	for (unsigned int i = 0; i < sizeof(sizes); i++) {
-		weights[i] = new MatrixLib*[sizes[i]];
-		for (unsigned int ii = 0; ii < sizes[i]; ii++) {
-			weights[i][ii] = new MatrixLib(sizes[i], 1);
-		}
-	}*/
-	//weights = (MatrixLib**)malloc(sizeof(MatrixLib*) * sizeof(sizes));
-	//for (unsigned int i = 0; i < sizes[i]; i++) {
-	//	*(weights + i) = (MatrixLib*)malloc(sizeof(MatrixLib) * sizes[i]);
-	//}
-	/*biases = (float**)malloc(sizeof(float*) * sizeof(sizes));
-	for (unsigned int i = 0; i < sizes[i]; i++) {
-		*(biases + i) = (float*)malloc(sizeof(float) * sizes[i]);
-	}*/
-	biases = new float* [arrsize];
+	biases = (float**) malloc(sizeof(float*) * (arrsize + 1));
 	for (unsigned int i = 0; i < arrsize; i++) {
-		biases[i] = new float[sizes[i]];
-	}
-	/*for (unsigned int i = 0; i < sizeof(sizes); i++) {
-		for (unsigned int ii = 0; ii < sizes[i]; ii++) { 
-			weights[i][ii] = MatrixLib(sizes[i], 1); // assigning neuron ii in row (i+1) 's weights from size of neuron layer before it.
-		}
-	}*/
-	/*
-	for (unsigned int i = 0; i < 3; i++) {
-		weights[sizeof(sizes)-1][i] = MatrixLib(sizes[sizeof(sizes) - 2], 1); // assigning neuron i in last row's weights from the size of the 2nd to last layer.
-	}*/
-	for (unsigned int i = 0; i < arrsize; i++) {
+		biases[i] = (float*) malloc(sizeof(float) * (bigsize +1)); //ignore
 		for (unsigned int ii = 0; ii < sizes[i]; ii++) {
 			//biases[i][ii] = rand() % 2 + 1;
 			biases[i][ii] = 1;
+			
 		}
 	}
 }
 float* NeuralNetwork::feedforward(float* inputs, unsigned int numinputs) {
-	unsigned int bigsize = 0;
-	for (unsigned int i = 0; i < 3; i++) {
-		if (sizes[i] > bigsize) {
-			bigsize = sizes[i];
-		}
-	}
-	float* intermediate = new float[bigsize];
+	std::cout << sizes[0] << 'd';
+	float* intermediate = new float[5];
 	for (unsigned int i = 0; i < numinputs; i++) {
 		intermediate[i] = inputs[i];
+		std::cout << sizes[i] << '\n'; //bug big big bug
 	}
 	for (unsigned int i = 0; i < weights.size(); i++) { //setup done, feeding forward now
 		intermediate = weights[i].DotProduct(intermediate);//all products dotted for the next layer

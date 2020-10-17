@@ -24,7 +24,8 @@ MatrixLib::MatrixLib(unsigned int width, unsigned int height)
 	}*/
 }
 float* MatrixLib::DotProduct(float* mult) {
-	float* totals = new float[width];
+	float* totals = (float*)malloc(sizeof(float) * width);
+	//float* totals = new float[this->width];
 	for (unsigned int i = 0; i < width; i++) {
 		totals[i] = 0;
 	}

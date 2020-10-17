@@ -18,7 +18,7 @@ public:
 	sf::Vector2f* getVelocity();
 	sf::Vector2f* getSize();
 	NeuralNetwork* getNetwork();
-	void randomAction();
+	void decideAction(float* senses);
 	bool grounded;
 	NeuralNetwork network;
 	unsigned int* sizein;

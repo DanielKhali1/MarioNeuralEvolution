@@ -2,6 +2,7 @@
 #include "Agent.h"
 #include "Constants.h"
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 Agent::Agent(float width, float height, unsigned int* sizein, unsigned int inputs, unsigned int arrsize)
 	: grounded(false),
@@ -64,11 +65,18 @@ sf::Vector2f* Agent::getSize()
 	return &size;
 }
 
-void Agent::randomAction()
-{
-	int random = rand() % 2;
-	
-	switch (random)
+void Agent::decideAction(float* senses)
+{	
+	float* outputs = network.feedforward(senses, inputs);
+	unsigned int active = 0;
+	float highest = 0;
+	for (unsigned int i = 0; i < 2; i++) { //hardcoded
+		if (outputs[i] > highest) {
+			highest = outputs[i];
+			active = i;
+		}
+	}
+	switch (active)
 	{
 		case 0: Jump();			break;
 		case 1: MoveForward();  break;
