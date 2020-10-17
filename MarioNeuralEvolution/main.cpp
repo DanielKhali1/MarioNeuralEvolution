@@ -8,24 +8,19 @@
 
 int main()
 {
-    unsigned int sample[3] = { 3, 1, 2 };
-    NeuralNetwork network(&sample[0], 3); //this randomly worked, like twice out of 10 times. There is some sort of memory issue that is inconsistant between trials.
-    float inputs[] = {1, 2, 1};
-    float* goin = inputs;
-    float* results = network.feedforward(goin, 3);
-    std::cout << results[0];
-    std::cout << '\n';
-    std::cout << results[1];
-
-    GameManager Manager;
+    GameManager Manager; 
     Manager.createMap(0);
-    sf::RenderWindow window(sf::VideoMode(720, 500), "SFML works!");
+    std::cout << Manager.getAgent(1)->sizein[0] << 'j';
+    sf::RenderWindow window(sf::VideoMode(720, 500), "SFML works!"); //sizein goes from {5, 5, 3} to {720, 500, 32} here somehow
+    std::cout << Manager.getAgent(1)->sizein[0] << 'h';
     Manager.startGame();
     window.setFramerateLimit(60);
     srand(time(NULL));
+    
 
     while (window.isOpen())
     {
+
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -35,8 +30,8 @@ int main()
         }
 
 
-
         Manager.step(&window);
+        
         Manager.DrawAll(&window);
 
     }

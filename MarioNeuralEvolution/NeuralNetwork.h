@@ -4,12 +4,15 @@
 class NeuralNetwork
 {
 public:
-	NeuralNetwork(unsigned int* sizes, unsigned int numinputs); //todo: variation
+	NeuralNetwork(unsigned int* sizes, unsigned int numinputs, unsigned int arrsize); //todo: variation
 	float* feedforward(float * inputs, unsigned int numinputs);
 	float sigmoid(float d);
-private:
 	std::vector<MatrixLib> weights;
-	float** biases; 
+	float** biases;
+	MatrixLib* getLib(int numreq);
+	float** getBiases();
+	unsigned int bigsize;
+private:
 	unsigned int* sizes;
 protected:
 };

@@ -1,9 +1,12 @@
 #include "GameManager.h"
 #include "MapControl.h"
+#include "GeneticAlgorithm.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-GameManager::GameManager()
+
+GameManager::GameManager():
+    population(50)
 {
     //loading fonts from font directory 
     //TEXT CANT BE DRAWN IF FONT IS NOT LOADED
@@ -29,7 +32,7 @@ GameManager::GameManager()
 }
 
 void GameManager::createMap(int level) {
-    map = MapControl(level);
+    map = MapControl(level);   
 }
 
 void GameManager::startBreeding() {
@@ -39,15 +42,15 @@ void GameManager::startBreeding() {
 void GameManager::startGame() {
 
     //TODO: CHANGE TO IMPLEMENT GENETIC ALGORITHM
-    for (unsigned int i = 0; i < 10; i++)
-        agents.push_back(Agent(20, 20));
+    //for (unsigned int i = 0; i < 10; i++)
+        //agents.push_back(Agent(20, 20));
 
     platVectors = map.getPlatforms();
     PlayerEnd = map.getEnd();
     PlayerSpawn = map.getSpawn();
 
-    for(unsigned int i = 0; i < agents.size(); i++)
-        agents[i].setPosition(PlayerSpawn);
+    for(unsigned int i = 0; i < population.popSize; i++)
+        population.agent[i].setPosition(PlayerSpawn);
 }
 
 void GameManager::step(sf::RenderWindow* window)
@@ -55,57 +58,57 @@ void GameManager::step(sf::RenderWindow* window)
 
     takeInputs();
 
-    for (unsigned int it = 0; it < agents.size(); it++)
+    for (unsigned int it = 0; it < population.agent.size(); it++)
     {
-        agents[it].randomAction(&platVectors);
-        agents[it].Update();
+        population.agent[it].Update();
 
-        if (agents[it].getVelocity()->y > 0) // ONLY CHECK COLLISIONS IF THE PLAYER IS FALLING DOWN
+        float sample[3] = { 1, 1, 1 };
+        float* senses = &sample[0];
+        population.agent[it].decideAction(senses);
+        if (population.agent[it].getVelocity()->y > 0) // ONLY CHECK COLLISIONS IF THE PLAYER IS FALLING DOWN
         {
             for (unsigned int i = 0; i < platVectors.size(); i++) {
-                if (platVectors.at(i).checkCollision(agents[it].getPosition(), agents[it].getSize()) && !agents[it].alreadyCollided)
+                if (platVectors.at(i).checkCollision(population.agent[it].getPosition(), population.agent[it].getSize()))
                 {
-                    agents[it].setPosition(sf::Vector2f(agents[it].getPosition()->x, platVectors.at(i).getPosition()->y - agents[it].getSize()->y));
-                    agents[it].getAcceleration()->y = 0;
-                    agents[it].grounded = true;
+                    population.agent[it].setPosition(sf::Vector2f(population.agent[it].getPosition()->x, platVectors.at(i).getPosition()->y - population.agent[it].getSize()->y));
+                    population.agent[it].getAcceleration()->y = 0;
+                    population.agent[it].grounded = true;
                     agents[it].alreadyCollided = true;
-
                 }
             }
-            if (PlayerEnd.checkCollision(agents[it].getPosition(), agents[it].getSize()))
+            if (PlayerEnd.checkCollision(population.agent[it].getPosition(), population.agent[it].getSize()))
             {
-                agents[it].setPosition(sf::Vector2f(20, 20));
+                population.agent[it].setPosition(sf::Vector2f(20, 20));
             }
         }
-        if (agents[it].getVelocity()->y < 0) // ONLY CHECK COLLISIONS IF THE PLAYER IS FALLING DOWN
+        if (population.agent[it].getVelocity()->y < 0) // ONLY CHECK COLLISIONS IF THE PLAYER IS FALLING DOWN
         {
             for (unsigned int i = 0; i < platVectors.size(); i++) {
-                if (platVectors.at(i).checkCollision(agents[it].getPosition(), agents[it].getSize()) && !agents[it].alreadyCollided)
+                if (platVectors.at(i).checkCollision(population.agent[it].getPosition(), population.agent[it].getSize()))
                 {
-                    agents[it].setPosition(sf::Vector2f(agents[it].getPosition()->x, platVectors.at(i).getPosition()->y + platVectors.at(i).getSize()->y));
-                    agents[it].getAcceleration()->y = 0;
-                    agents[it].getVelocity()->y = 0;
+                    population.agent[it].setPosition(sf::Vector2f(population.agent[it].getPosition()->x, platVectors.at(i).getPosition()->y + platVectors.at(i).getSize()->y));
+                    population.agent[it].getAcceleration()->y = 0;
+                    population.agent[it].getVelocity()->y = 0;
                     agents[it].alreadyCollided = true;
+
                 }
             }
         }
-        if (agents[it].getPosition()->x < 0)
-            agents[it].setPosition(sf::Vector2f(0, agents[it].getPosition()->y));
-
-        agents[it].alreadyCollided = false;
+        if (population.agent[it].getPosition()->x < 0)
+            population.agent[it].setPosition(sf::Vector2f(0, population.agent[it].getPosition()->y));
     }
     sf::View view;
     view.setCenter(sf::Vector2f(360.f, 250.f));
     view.setSize(sf::Vector2f(720.f, 500.f));
 
-    Agent* furthestAgent = &(agents[0]);
-    float furthestXPosition = agents[0].getPosition()->x;
+    Agent* furthestAgent = &(population.agent[0]);
+    float furthestXPosition = population.agent[0].getPosition()->x;
 
-    for (unsigned int i = 0; i < agents.size(); i++)
-        if (agents[i].getPosition()->x > furthestXPosition)
+    for (unsigned int i = 0; i < population.agent.size(); i++)
+        if (population.agent[i].getPosition()->x > furthestXPosition)
         {
-            furthestAgent = &(agents[i]);
-            furthestXPosition = agents[i].getPosition()->x;
+            furthestAgent = &(population.agent[i]);
+            furthestXPosition = population.agent[i].getPosition()->x;
         }
     // Screen scrolling
     if (((*window).mapCoordsToPixel(sf::Vector2f(((*furthestAgent).getPosition()->x), ((*furthestAgent).getPosition()->y))).x) > 300)
@@ -143,9 +146,8 @@ void GameManager::DrawAll(sf::RenderWindow * window)
     window->display();
     window->clear();
 
-
-    for (unsigned int i = 0; i < agents.size(); i++)
-        agents[i].Draw(window);
+    for (unsigned int i = 0; i < population.agent.size(); i++)
+        population.agent[i].Draw(window);
     for (unsigned int i = 0; i < platVectors.size(); i++)
         platVectors.at(i).Draw(window);
     
@@ -154,7 +156,7 @@ void GameManager::DrawAll(sf::RenderWindow * window)
 
 Agent* GameManager::getAgent(int iterator)
 {
-    return &agents[iterator];
+    return &population.agent[iterator];
 }
 
 

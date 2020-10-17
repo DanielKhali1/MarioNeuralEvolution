@@ -4,13 +4,14 @@
 #include "Platform.h"
 #include <iostream>
 
+#include "NeuralNetwork.h"
 class Agent
 {
 
 public:
-	Agent(float width, float height);
-	void MoveForward(std::vector<Platform>* platforms);
-	void MoveBackward(std::vector<Platform>* platforms);
+	Agent(float width, float height, unsigned int* sizein, unsigned int inputs, unsigned int arrsize);
+	void MoveForward();
+	void MoveBackward();
 	void Jump();
 	void Update();
 	void Draw(sf::RenderWindow* window);
@@ -19,11 +20,15 @@ public:
 	sf::Vector2f* getAcceleration();
 	sf::Vector2f* getVelocity();
 	sf::Vector2f* getSize();
-	void randomAction(std::vector<Platform> * platforms);
 	bool grounded;
 	bool alreadyCollided = false;
+	NeuralNetwork* getNetwork();
+	void decideAction(float* senses);
+	NeuralNetwork network;
+	unsigned int* sizein;
+	unsigned int inputs;
+	unsigned int arrsize;
 private:
-	float health;
 	sf::Vector2f size;
 	sf::Vector2f position;
 	sf::Vector2f velocity;

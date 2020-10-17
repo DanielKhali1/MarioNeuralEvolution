@@ -6,6 +6,7 @@
 #include <vector>
 #include <map>
 
+#include "GeneticAlgorithm.h"
 class GameManager
 {
 public:
@@ -21,8 +22,9 @@ public:
 private:
 	MapControl map;
 	//will be replaced with Genetic Algorithm
-	std::vector<Agent> agents;
+	//std::vector<Agent> agents;
 	// ----------------------------------------
+	GeneticAlgorithm population;
 	std::vector<Platform> platVectors;
 	Platform PlayerEnd;
 	sf::Vector2f PlayerSpawn;

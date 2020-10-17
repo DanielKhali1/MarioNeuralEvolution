@@ -8,7 +8,7 @@
 *.db
 .vs/MarioNeuralEvolution/v16/.suo
 *.obj
-*.tlog
+!*.tlog
 *.log
 *.pdb
 *.exe
@@ -18,3 +18,10 @@
 *.tlog
 *.pdb
 *.log
+*.pdb
+*.iobj
+*.exe
+*.iobj
+*.ipdb
+*.log
+*.tlog
