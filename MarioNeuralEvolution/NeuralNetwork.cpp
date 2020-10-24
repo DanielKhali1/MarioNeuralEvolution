@@ -22,18 +22,16 @@ NeuralNetwork::NeuralNetwork(unsigned int* sizein, unsigned int numinputs, unsig
 	for (unsigned int i = 0; i < arrsize; i++) {
 		biases[i] = (float*) malloc(sizeof(float) * (bigsize +1)); //ignore
 		for (unsigned int ii = 0; ii < sizes[i]; ii++) {
-			//biases[i][ii] = rand() % 2 + 1;
-			biases[i][ii] = 1;
+			biases[i][ii] = rand() % 2 + 1;
+			//biases[i][ii] = 1;
 			
 		}
 	}
 }
 float* NeuralNetwork::feedforward(float* inputs, unsigned int numinputs) {
-	std::cout << sizes[0] << 'd';
 	float* intermediate = new float[5];
 	for (unsigned int i = 0; i < numinputs; i++) {
 		intermediate[i] = inputs[i];
-		std::cout << sizes[i] << '\n'; //bug big big bug
 	}
 	for (unsigned int i = 0; i < weights.size(); i++) { //setup done, feeding forward now
 		intermediate = weights[i].DotProduct(intermediate);//all products dotted for the next layer

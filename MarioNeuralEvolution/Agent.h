@@ -10,8 +10,8 @@ class Agent
 
 public:
 	Agent(float width, float height, unsigned int* sizein, unsigned int inputs, unsigned int arrsize);
-	void MoveForward();
-	void MoveBackward();
+	void MoveForward(std::vector<Platform>* platforms);
+	void MoveBackward(std::vector<Platform>* platforms);
 	void Jump();
 	void Update();
 	void Draw(sf::RenderWindow* window);
@@ -23,7 +23,7 @@ public:
 	bool grounded;
 	bool alreadyCollided = false;
 	NeuralNetwork* getNetwork();
-	void decideAction(float* senses);
+	void decideAction(float* senses, std::vector<Platform>* platforms);
 	NeuralNetwork network;
 	unsigned int* sizein;
 	unsigned int inputs;

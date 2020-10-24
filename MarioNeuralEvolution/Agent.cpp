@@ -82,7 +82,7 @@ sf::Vector2f* Agent::getSize()
 	return &size;
 }
 
-void Agent::decideAction(float* senses)
+void Agent::decideAction(float* senses, std::vector<Platform>* platforms)
 {	
 	float* outputs = network.feedforward(senses, inputs);
 	unsigned int active = 0;

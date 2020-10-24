@@ -62,9 +62,9 @@ void GameManager::step(sf::RenderWindow* window)
     {
         population.agent[it].Update();
 
-        float sample[3] = { 1, 1, 1 };
+        float sample[3] = {1, 1, 1 };
         float* senses = &sample[0];
-        population.agent[it].decideAction(senses);
+        population.agent[it].decideAction(senses, &map.Platforms);
         if (population.agent[it].getVelocity()->y > 0) // ONLY CHECK COLLISIONS IF THE PLAYER IS FALLING DOWN
         {
             for (unsigned int i = 0; i < platVectors.size(); i++) {
@@ -73,7 +73,7 @@ void GameManager::step(sf::RenderWindow* window)
                     population.agent[it].setPosition(sf::Vector2f(population.agent[it].getPosition()->x, platVectors.at(i).getPosition()->y - population.agent[it].getSize()->y));
                     population.agent[it].getAcceleration()->y = 0;
                     population.agent[it].grounded = true;
-                    agents[it].alreadyCollided = true;
+                    population.agent[it].alreadyCollided = true;
                 }
             }
             if (PlayerEnd.checkCollision(population.agent[it].getPosition(), population.agent[it].getSize()))
@@ -89,7 +89,7 @@ void GameManager::step(sf::RenderWindow* window)
                     population.agent[it].setPosition(sf::Vector2f(population.agent[it].getPosition()->x, platVectors.at(i).getPosition()->y + platVectors.at(i).getSize()->y));
                     population.agent[it].getAcceleration()->y = 0;
                     population.agent[it].getVelocity()->y = 0;
-                    agents[it].alreadyCollided = true;
+                    population.agent[it].alreadyCollided = true;
 
                 }
             }

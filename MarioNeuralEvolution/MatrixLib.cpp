@@ -10,7 +10,7 @@ MatrixLib::MatrixLib(unsigned int width, unsigned int height)
 	for (unsigned int i = 0; i < height; i++) {
 		matrix[i] = new float[width];
 		for (unsigned int j = 0; j < width; j++) {
-			matrix[i][j] = 1.0f;
+			matrix[i][j] = rand() % 2 + 1;
 		}
 	} //same sort of error with new or malloc....
 	/*matrix = (float**)malloc(sizeof(float*) * (height+1));

@@ -4,8 +4,11 @@
 GeneticAlgorithm::GeneticAlgorithm(unsigned int popSize): 
 	popSize(popSize), generation(0)
 {
-	unsigned int sizein[3] = { 5, 5, 3 };
-	unsigned int arrsize = sizeof(sizein)/sizeof(unsigned int);
+	unsigned int* sizein = new unsigned int[3];
+	sizein[0] = 5;
+	sizein[1] = 5;
+	sizein[2] = 3;
+	unsigned int arrsize = 3;
 	unsigned int* sin = sizein;
 	unsigned int inputs = 3; //all this is hardcoded rn, don't see the need to be dynamic yet
 	for (unsigned int i = 0; i < popSize; i++)
